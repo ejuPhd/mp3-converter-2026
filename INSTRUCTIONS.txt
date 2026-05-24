@@ -1,0 +1,217 @@
+================================================================================
+                    MP4 TO MP3 CONVERTER - COMPLETE SETUP INSTRUCTIONS
+================================================================================
+
+SYSTEM: macOS Tahoe 26.5 | Apple M4 Pro | Python 3.13.5 | VS Code 1.119.0
+
+================================================================================
+PART 1: SYSTEM PREPARATION
+================================================================================
+
+1. Install Homebrew (if not installed):
+   ----------------------------------------
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+2. Install ffmpeg:
+   ----------------
+   brew install ffmpeg
+
+3. Verify ffmpeg:
+   ---------------
+   ffmpeg -version
+
+4. Verify Python 3.13.5:
+   ----------------------
+   python3 --version
+
+================================================================================
+PART 2: PROJECT SETUP
+================================================================================
+
+5. Create project directory:
+   -------------------------
+   mkdir -p ~/WebApps/mp3-converter
+   cd ~/WebApps/mp3-converter
+
+6. Create virtual environment:
+   ---------------------------
+   python3 -m venv .venv
+
+7. Activate virtual environment:
+   -----------------------------
+   source .venv/bin/activate
+
+   (Your prompt should now show: (.venv) at the beginning)
+
+8. Upgrade pip:
+   -------------
+   pip install --upgrade pip
+
+9. Install Python dependencies:
+   ----------------------------
+   pip install tqdm
+
+10. Verify tqdm installation:
+    --------------------------
+    pip list | grep tqdm
+
+================================================================================
+PART 3: CREATE PROJECT FILES
+================================================================================
+
+11. Create main script file:
+    -------------------------
+    touch mp4_to_mp3.py
+
+    (Paste the complete code from mp4_to_mp3.py into this file in VS Code)
+
+12. Create VS Code settings:
+    -------------------------
+    mkdir -p .vscode
+    touch .vscode/settings.json
+
+    (Paste the JSON from .vscode/settings.json)
+
+13. Create .gitignore:
+    -------------------
+    touch .gitignore
+
+    (Paste the content from .gitignore)
+
+14. Create requirements.txt:
+    -------------------------
+    touch requirements.txt
+
+    (Paste the content from requirements.txt)
+
+================================================================================
+PART 4: FIX VS CODE INTERPRETER
+================================================================================
+
+15. Select correct Python interpreter:
+    -----------------------------------
+    Cmd+Shift+P → "Python: Select Interpreter"
+    → Choose: Python 3.13.5 ('.venv': venv)
+    → OR enter path: /Users/amu247/WebApps/mp3-converter/.venv/bin/python
+
+16. Reload VS Code window:
+    -----------------------
+    Cmd+Shift+P → "Developer: Reload Window"
+
+17. Verify Pylance recognizes tqdm:
+    -------------------------------
+    The red squiggle under "import tqdm" should disappear.
+
+================================================================================
+PART 5: USAGE
+================================================================================
+
+18. Single file conversion:
+    ------------------------
+    python mp4_to_mp3.py song.mp4
+
+19. Custom output location:
+    ------------------------
+    python mp4_to_mp3.py concert.mp4 ~/Music/
+
+20. Batch conversion (all MP4s in folder):
+    -----------------------------------------
+    python mp4_to_mp3.py --batch ~/Downloads/rips/
+
+21. Recursive batch conversion:
+    ----------------------------
+    python mp4_to_mp3.py --batch ~/Downloads/rips/ --recursive
+
+22. Quality presets:
+    -----------------
+    python mp4_to_mp3.py --preset archive symphony.mp4    # 320kbps
+    python mp4_to_mp3.py --preset voice podcast.mp4         # 128kbps
+    python mp4_to_mp3.py --preset music track.mp4           # 256kbps (default)
+
+23. View help:
+    -----------
+    python mp4_to_mp3.py --help
+
+================================================================================
+PART 6: GITHUB UPLOAD (github.com/ejuPhd)
+================================================================================
+
+24. Initialize Git repository:
+    -------------------------
+    cd ~/WebApps/mp3-converter
+    git init
+
+25. Configure Git (if not done):
+    ----------------------------
+    git config --global user.name "Your Name"
+    git config --global user.email "your.email@example.com"
+
+26. Stage all project files:
+    -------------------------
+    git add mp4_to_mp3.py
+    git add README.md
+    git add requirements.txt
+    git add .gitignore
+    git add .vscode/settings.json
+
+27. Commit:
+    -------
+    git commit -m "Initial commit: MP4 to MP3 converter for macOS"
+
+28. Create GitHub repository:
+    --------------------------
+    Go to: https://github.com/new
+    Repository name: mp3-converter
+    Description: Python MP4 to MP3 converter optimized for macOS Apple Silicon
+    Visibility: Public or Private
+    DO NOT initialize with README, .gitignore, or license
+    Click: Create repository
+
+29. Link local to remote:
+    ----------------------
+    git remote add origin https://github.com/ejuPhd/mp3-converter.git
+
+30. Push to GitHub:
+    ---------------
+    git branch -M main
+    git push -u origin main
+
+    (Enter GitHub username and personal access token when prompted)
+
+31. Verify upload:
+    --------------
+    Visit: https://github.com/ejuPhd/mp3-converter
+
+================================================================================
+PART 7: GITHUB PERSONAL ACCESS TOKEN (if needed)
+================================================================================
+
+32. Generate token:
+    ---------------
+    Go to: https://github.com/settings/tokens
+    Click: Generate new token (classic)
+    Note: mp3-converter push
+    Expiration: 30 days
+    Scopes: Check [repo] (full control of private repositories)
+    Click: Generate token
+    COPY THE TOKEN IMMEDIATELY (you cannot see it again!)
+
+33. Use token:
+    ----------
+    When git push asks for password, paste your token instead.
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Activate venv:        source .venv/bin/activate
+Deactivate venv:      deactivate
+Check Python:         which python
+Check ffmpeg:         ffmpeg -version
+Check packages:       pip list
+Freeze deps:           pip freeze > requirements.txt
+Git status:           git status
+Git commit:           git commit -am "message"
+Git push:             git push origin main
+
+================================================================================

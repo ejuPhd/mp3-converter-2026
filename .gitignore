@@ -1,0 +1,24 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE (keep settings.json for workspace config, but ignore local)
+.vscode/settings.json
+.idea/
+
+# Output files
+*.mp3
+*.mp4
+
+# Environment variables
+.env
